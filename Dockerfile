@@ -25,7 +25,7 @@ WORKDIR /app/vissl
 RUN pip install opencv-python
 
 RUN pip uninstall -y classy_vision && \
-        pip install classy-vision@https://github.com/facebookresearch/ClassyVision/tarball/4785d5ee19d3bcedd5b28c1eb51e>
+        pip install classy-vision@https://github.com/facebookresearch/ClassyVision/tarball/4785d5ee19d3bcedd5b28c1eb51ea1f59188b54d
 
 RUN pip uninstall -y fairscale && \
         pip install fairscale==0.4.6
