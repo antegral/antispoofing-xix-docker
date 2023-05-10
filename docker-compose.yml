@@ -1,0 +1,9 @@
+version: "3"
+services:
+  antispoofing:
+    build: .
+    container_name: antispoofing
+    hostname: antispoofing
+    image: antispoofing/antispoofing
+    volumes:
+      - "./app:/app"
