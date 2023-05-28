@@ -2,7 +2,7 @@ FROM docker.io/nvidia/cuda:11.7.0-cudnn8-devel-ubuntu20.04
 
 WORKDIR /
 
-RUN apt-get update && apt install -y python3.8-dev python3-pip
+RUN apt-get update && apt install -y python3.8-dev python3-pip libgl1-mesa-glx libglib2.0-0
 
 ENV DEBIAN_FRONTEND=noninteractive PIP_PREFER_BINARY=1
 
@@ -22,7 +22,7 @@ RUN git clone --recursive https://github.com/facebookresearch/vissl.git app/viss
 
 WORKDIR /app/vissl
 
-RUN pip install opencv-python
+RUN pip install opencv-python wandb
 
 RUN pip uninstall -y classy_vision && \
         pip install classy-vision@https://github.com/facebookresearch/ClassyVision/tarball/4785d5ee19d3bcedd5b28c1eb51ea1f59188b54d
@@ -33,3 +33,7 @@ RUN pip uninstall -y fairscale && \
 RUN pip install -e ".[dev]"
 
 RUN python3.8 -c 'import vissl, apex'
+
+WORKDIR /app
+
+ENTRYPOINT ["/bin/bash"]
